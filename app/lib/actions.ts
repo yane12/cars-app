@@ -1,3 +1,4 @@
+'use server'
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 
@@ -11,9 +12,11 @@ export async function authenticate(prevState: string | undefined, formData: Form
                     return 'invalid credentials';
                 default:
                     return 'An unexpected error has occurred';
+                    console.log(error);
             }
 
         }
-        throw error;
+        console.log(error);
+        return `An error has occurred${error}`;
     }
 }
